@@ -1,0 +1,24 @@
+<launch>
+  <param name="~local_map_topic_name" value="/local_map" />
+  <param name="~base_tf_name" value="/base_link" />
+  <param name="~map_tf_name" value="/map" />
+  <param name="~goal_topic_name" value="/goal" />
+  <param name="~vis_goal_topic_name" value="/vis_goal" />
+  <param name="~vis_vel_topic_name" value="/vis_plot_vel" />
+  <param name="~vis_omega_topic_name" value="/vis_plot_omega" />
+  <param name="~vis_state_num_topic_name" value="/vis_state_num" />
+  <param name="~vis_state_text_topic_name" value="/vis_state_text" />
+  <param name="~matching_result_topic_name" value="/map_matching_result" />
+  <param name="~pub_twist_topic_name" value="/neet_bot/diff_drive_controller/cmd_vel" />
+  <param name="~sub_twist_topic_name" value="/pure_pursuit_twist" />
+  <param name="~rrt_star_service_name" value="/rrt_star_planner" />
+  <param name="~robot_radius" value="0.125" />
+  <param name="~goal_radius" value="0.2" />
+  <param name="~planning_retry_num" value="1" />
+  <param name="~matching_fail_limit" value="10" />
+  <param name="~twist_time_out" value="1.0" />
+  <param name="~goal_judgment_time" value="1.0" />
+  <param name="~stuck_judgment_time" value="2.0" />
+  <param name="~stuck_map_use_limit" value="30.0" />
+  <node pkg="state_machine" type="state_machine_node" name="state_machine"/>
+</launch>

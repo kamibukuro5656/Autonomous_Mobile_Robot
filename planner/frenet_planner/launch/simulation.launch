@@ -1,0 +1,32 @@
+<launch>
+  <param name="~grid_map_topic_name" value="/local_map" />
+  <param name="~base_tf_name" value="/base_link" />
+  <param name="~map_tf_name" value="/map" />
+  <param name="~vis_paths_topic_name" value="/frenet_paths" />
+  <param name="~vis_path_topic_name" value="/frenet_path" />
+  <param name="~motion_plan_topic_name" value="/motion_plan" />
+  <param name="~global_path_topic_name" value="/global_path" />
+  <param name="~obs_map_topic_name" value="/obs_map" />
+  <param name="~twist_topic_name" value="/neet_bot/diff_drive_controller/cmd_vel" />
+  <param name="~robot_radius" value="0.125" />
+  <param name="~max_road_width" value="1.0" />
+  <param name="~road_width_step" value="0.05" />
+  <param name="~max_pred_dist" value="2.5" />
+  <param name="~min_pred_dist" value="0.25" />
+  <param name="~pred_dist_step" value="0.25" />
+  <param name="~k_jerk" value="0.0005" />
+  <param name="~k_pred" value="0.0" />
+  <param name="~k_dist" value="30.0" />
+  <!-- ↓ ジャークを考慮しつつギリギリまで長さ最大のパスを選択させるためにやたらでかくしてある-->
+  <param name="~k_col_dist" value="100000.0" />
+  <param name="~k_danger" value="0.1" />
+  <param name="~lat_vel_limit" value="0.9" />
+  <param name="~regenerate_timing" value="3" />
+  <param name="~extend_collision_check" value="false" />
+  <param name="~publish_rate" value="10" />
+  <param name="~max_vel" value="0.75" />
+  <param name="~min_vel" value="0.05" />
+  <param name="~max_acc" value="0.5" />
+  <param name="~max_lat_acc" value="0.30" />
+  <node pkg="frenet_planner" type="frenet_planner_node" name="frenet_planner"/>
+</launch>

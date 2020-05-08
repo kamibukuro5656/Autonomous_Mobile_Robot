@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <arg name="model" default="$(find sim_model)/xacro/robot.xacro" />
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model) --inorder"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+    <arg name="world_name" value="room.world"/>
+  </include>
+
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x -6.5 -y 3.75 -z 0 -model neet_bot" />
+
+  <rosparam command="load" file="$(find sim_model)/config/diff_drive_controller.yaml" ns="/neet_bot" />
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/neet_bot"
+      args="diff_drive_controller" />
+    <node name="laser_tf_publisher" pkg="tf" type="static_transform_publisher" args="0.0 0 0 -1.57 0 0 /base_link /laser_link 10" />
+</launch>

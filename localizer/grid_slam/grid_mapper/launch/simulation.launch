@@ -1,0 +1,34 @@
+<launch>
+  <param name="~pcd_topic_name" value="/preprocessed_pcd" />
+  <param name="~map_topic_name" value="/grid_map" />
+  <param name="~scan_topic_name" value="/laser_link/scan" />
+  <param name="~correction_tf_name" value="/odom" />
+  <param name="~score_threshold" value="100.0" />
+  <param name="~map_save_file_path" value="$(find map)/simulation/" />
+  <param name="~map_save_file_name" value="grid" />
+  <param name="~map_save_request_topic_name" value="map_save_req" />
+  <param name="~mode_scan" value="true" />
+  <param name="~cell_size" value="0.0125" />
+  <param name="~x_min" value="-20.0" />
+  <param name="~x_max" value="20.0" />
+  <param name="~y_min" value="-20.0" />
+  <param name="~y_max" value="20.0" />
+  <param name="~weight_translation" value="10" />
+  <param name="~weight_angular" value="10" />
+  <param name="~resolution_depth" value="4" />
+  <param name="~prob_hit" value="0.51" />
+  <param name="~prob_miss" value="0.49" />
+  <node pkg="grid_mapper" type="grid_mapper_node" name="grid_mapper" output="screen"/>
+  
+  <param name="~scan_topic_name" value="/laser_link/scan" />
+  <param name="~visualize_topic_name" value="/vis_preprocessed_pcd" />
+  <param name="~preprocessed_topic_name" value="/preprocessed_pcd" />
+  <param name="~n_threshold" value="0" />
+  <param name="~cell_size" value="0.0125" />
+  <param name="~min_x" value="-10.0" />
+  <param name="~max_x" value="10.0" />
+  <param name="~min_y" value="-10.0" />
+  <param name="~max_x" value="10.0" />
+  <param name="~range" value="-1.0" />
+  <node pkg="scan_preprocessor" type="scan_preprocessor_node" name="scan_preprocessor"/>
+</launch>

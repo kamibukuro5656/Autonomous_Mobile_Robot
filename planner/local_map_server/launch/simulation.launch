@@ -1,0 +1,17 @@
+<launch>
+  <param name="~map_topic_name" value="/local_map" />
+  <param name="~scan_topic_name" value="/laser_link/scan" />
+  <param name="~base_map_topic_name" value="/grid_map" />
+  <param name="~map_tf_name" value="/map" />
+  <param name="~base_tf_name" value="/base_link" />
+  <param name="~cell_size" value="0.025" />
+  <param name="~x_min" value="-2.5" />
+  <param name="~x_max" value="2.5" />
+  <param name="~y_min" value="-2.5" />
+  <param name="~y_max" value="2.5" />
+  <param name="~prob_hit" value="0.9" />
+  <param name="~prob_miss" value="0.1" />
+  <param name="~prob_fix" value="0.51" />
+  <param name="~scan_stack_time" value="1.0" />
+  <node pkg="local_map_server" type="local_map_server_node" name="local_map_server"/>
+</launch>

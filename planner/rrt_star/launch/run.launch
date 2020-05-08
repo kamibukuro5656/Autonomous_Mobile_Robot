@@ -1,0 +1,33 @@
+<launch>
+  <param name="~grid_map_topic_name" value="/grid_map" />
+  <param name="~local_map_topic_name" value="/local_map" />
+  <param name="~base_tf_name" value="/base_link" />
+  <param name="~map_tf_name" value="/map" />
+
+<!-- <param name="~goal_topic_name" value="/goal" /> 
+  <param name="~path_topic_name" value="/pubsub/global_path" /> -->
+
+  <param name="~goal_topic_name" value="/pubsub/goal" />
+  <param name="~path_topic_name" value="/pubsub/global_path" />
+  <param name="~vis_path_topic_name" value="/vis_path" />
+  <param name="~vis_edges_topic_name" value="/vis_edges" />
+  <param name="~vis_nodes_topic_name" value="/vis_nodes" />
+  <param name="~vis_smoothed_path_topic_name" value="/vis_smoothed_path" />
+  <param name="~map_request_topic_name" value="/map_load_request" />
+  <param name="~c_space_topic_name" value="/cspace_map" />
+
+  <param name="~service_name" value="/rrt_star_planner" />
+  <param name="~iteration_num" value="15000" />
+  <param name="~step_size" value="0.2" />
+  <param name="~r_param" value="80.0" />
+  <param name="~select_goal_prob" value="0.1" />
+  <param name="~use_informed_rrt" value="true" />
+  <param name="~robot_radius" value="0.13" />
+  <param name="~prob_threshold" value="0.2" />
+  <param name="~smoothed_path_step" value="0.01" />
+  <param name="~smoothed_path_cspace_offset" value="0.05" />
+  <param name="~time_out" value="5.0" />
+  <param name="~improvement_amount" value="0.001" />
+  <param name="~potential_gain" value="0.001" />
+  <node pkg="rrt_star" type="rrt_star_node" name="rrt_star"/>
+</launch>

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<robot name="NeetBot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <material name="body_color">
+    <color rgba="1.0 1.0 0.9 2.0"/>
+  </material>
+  <material name="wheel_color">
+    <color rgba="1.0 0.5 0.0 2.0"/>
+  </material>
+  <material name="ball_color">
+    <color rgba="0.0 1.0 0.5 2.0"/>
+  </material>
+
+  <xacro:macro name="wheel_macro" params="parent prefix xyz">
+    <joint name="${prefix}_joint" type="continuous">
+      <origin xyz="${xyz}" rpy="${radians(-90)} 0 0"/>
+      <parent link="${parent}"/>
+      <child  link="${prefix}_link"/>
+      <axis xyz="0 0 1" />
+    </joint>
+    <link name="${prefix}_link">
+      <visual>
+        <geometry>
+          <cylinder radius="0.074" length="0.02" />
+        </geometry>
+        <material name="wheel_color"/>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="0.074" length="0.02" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.1"/>
+       <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+      </inertial>
+    </link>
+    <gazebo reference="${prefix}_link">
+      <material>Gazebo/Red</material>
+    </gazebo>
+  </xacro:macro> 
+
+  <link name="base_link"/>
+
+  <xacro:macro name="ball_macro" params="parent prefix xyz">
+    <joint name="${prefix}_joint" type="continuous">
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child  link="${prefix}_link"/>
+    </joint>
+    <link name="${prefix}_link">
+      <visual>
+        <geometry>
+          <sphere radius="0.02"/>
+        </geometry>
+        <material name="ball_color"/>
+      </visual>
+      <collision>
+        <geometry>
+          <sphere radius="0.02" />
+        </geometry>
+      </collision>
+    </link>
+    <gazebo reference="${prefix}_link">
+      <material>Gazebo/Gray</material>
+    </gazebo>
+  </xacro:macro> 
+
+  <joint name="body_joint" type="fixed">
+    <parent link="base_link"/>
+    <child  link="body_link"/>
+    <origin xyz="0.0 0 0.2425" rpy="0 0 0"/>
+  </joint>
+  <link name="body_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.125" length="0.115"/>
+      </geometry>
+      <material name="body_color"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.125" length="0.115" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+  <gazebo reference="body_link">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+
+
+  <joint name="body_joint2" type="fixed">
+    <parent link="base_link"/>
+    <child  link="body_link2"/>
+    <origin xyz="0.0 0 0.1075" rpy="0 0 0"/>
+  </joint>
+  <link name="body_link2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.25 0.170 0.155"/>
+      </geometry>
+      <material name="body_color"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.25 0.170 0.155"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+    </inertial>
+  </link>
+  <gazebo reference="body_link2">
+    <material>Gazebo/Gray</material>
+  </gazebo>
+
+
+  <xacro:wheel_macro prefix="left_wheel"  parent="base_link" xyz="0 0.1085 0.074"/>
+  <xacro:wheel_macro prefix="right_wheel" parent="base_link" xyz="0 -0.1085 0.074"/>
+  <xacro:ball_macro prefix="front_ball" parent="base_link" xyz="0.095 0.0 0.02"/>
+  <xacro:ball_macro prefix="back_ball" parent="base_link" xyz="-0.095 0.0 0.02"/>
+
+</robot>

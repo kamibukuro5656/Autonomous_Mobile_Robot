@@ -1,0 +1,7 @@
+<launch>
+  <param name="unit_linear" value="0.25" />
+  <param name="unit_angular" value="1.0" />
+  <param name="dead_zone" value="0.2" />
+  <param name="speed_topic_name" value="/neet_bot/diff_drive_controller/cmd_vel" />
+  <node pkg="joystick_controller" type="joystick_controller_node.py" name="joystick_controller" />
+</launch>

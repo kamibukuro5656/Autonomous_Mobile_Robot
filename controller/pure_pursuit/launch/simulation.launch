@@ -1,0 +1,27 @@
+<launch>
+  <!-- <param name="~twist_cmd_topic_name" value="/neet_bot/diff_drive_controller/cmd_vel" /> -->
+  <param name="~twist_cmd_topic_name" value="/pure_pursuit_twist" />
+  <param name="~vis_path_topic_name" value="pure_pursuit_path" />
+  <param name="~vis_ref_point_topic_name" value="pure_pursuit_ref_point" />
+  <param name="~motion_plan_topic_name" value="motion_plan" />
+  <param name="~base_tf_name" value="base_link" />
+  <param name="~map_tf_name" value="map" />
+  <param name="~grid_map_topic_name" value="local_map" />
+  <param name="~robot_radius" value="0.125" />
+  <param name="~end_radius" value="0.1" />
+  <param name="~publish_rate" value="50" />
+  <param name="~max_ref_radius" value="0.35" />
+  <param name="~min_ref_radius" value="0.035" />
+  <param name="~gain" value="0.5" />
+  <param name="~sample_num" value="50" />
+  <param name="~pred_time" value="0.5" />
+  <param name="~max_vel_robot" value="1.0" />
+  <param name="~min_vel_robot" value="0.0" />
+  <param name="~max_acc_robot" value="1.0" />
+  <param name="~min_acc_robot" value="-1.0" />
+  <param name="~max_omega_robot" value="5.0" />
+  <param name="~min_omega_robot" value="-5.0" />
+  <param name="~max_d_omega_robot" value="5.0" />
+  <param name="~min_d_omega_robot" value="-5.0" />
+  <node pkg="pure_pursuit" type="pure_pursuit_node" name="pure_pursuit"/>
+</launch>

@@ -1,0 +1,7 @@
+<launch>
+  <param name="unit_linear" value="0.25" />
+  <param name="unit_angular" value="2.0" />
+  <param name="dead_zone" value="0.2" />
+  <param name="speed_topic_name" value="speed_request" />
+  <node pkg="joystick_controller" type="joystick_controller_node.py" name="joystick_controller" />
+</launch>

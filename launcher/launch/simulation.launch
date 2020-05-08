@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find launcher)/rviz/rviz.rviz"/>
+  <include file="$(find grid_scan_matcher)/launch/simulation.launch" />
+  <include file="$(find rrt_star)/launch/run.launch" />
+  <include file="$(find frenet_planner)/launch/simulation.launch" />
+  <include file="$(find pure_pursuit)/launch/simulation.launch" />
+  <include file="$(find local_map_server)/launch/simulation.launch" />
+  <include file="$(find state_machine)/launch/simulation.launch" />
+</launch>
