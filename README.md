@@ -8,12 +8,27 @@ rviz上でゴールを与えると目標座標まで自律的に移動する。<
  [![](http://img.youtube.com/vi/FAr_-Xh7VtE/0.jpg)](http://www.youtube.com/watch?v=FAr_-Xh7VtE "")
 
 # 依存関係
+- [Eigen3](http://eigen.tuxfamily.org/index.php?title=Main_Page)
 - [jsk-ros-pkg/jsk_visualization](https://github.com/jsk-ros-pkg/jsk_visualization)
 - [ceres-solver](https://github.com/ceres-solver/ceres-solver)
 - [nanoflann](https://github.com/jlblancoc/nanoflann)
 
 # 使用法
+~~~
+mkdir ros_ws
+cd ros_ws
+git clone https://github.com/kamibukuro5656/Autonomous_Mobile_Robot.git src
+cd src
+catkin_init_workspace
+cd ..
+unzip src/map/simulation/grid.zip -d src/map/simulation/
+catkin_make -DCMAKE_CXX_FLAGS="-Ofast"
+source devel/setup.bash
+roslaunch sim_model robot_gazebo.launch
 
+*****open another terminal*****
+roslaunch launcher simulation.launch
+~~~
 # 参考文献
 - 上田隆一, "詳解 確率ロボティクス Pythonによる基礎アルゴリズムの実装", 講談社, 2019年10月
 - 友納正裕, "SLAM入門 -ロボットの自己位置推定と地図構築の技術-", オーム社, 2018年3月
